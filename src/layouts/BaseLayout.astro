@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { productionFlags, siteConfig } from '../config/site';
 
 interface Props {
   title?: string;
@@ -18,11 +19,12 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={siteConfig.siteUrl} />
   </head>
   <body>
     <header class="site-header">
       <div class="container site-header__inner">
-        <a href="#top" class="brand">Malerei Blaser <small>Spiez</small></a>
+        <a href="#top" class="brand">{siteConfig.brandShort} <small>{siteConfig.location}</small></a>
         <nav class="site-nav" aria-label="Hauptnavigation">
           <a href="#leistungen">Leistungen</a>
           <a href="#galerie">Galerie</a>
@@ -37,12 +39,15 @@ const {
     <footer class="site-footer">
       <div class="container site-footer__inner footer-grid">
         <div>
-          <p><strong>Atelier Martin Blaser</strong><br />Malerei & Oberflächen mit Schweizer Präzision.</p>
+          <p><strong>{siteConfig.businessName}</strong><br />Malerei & Oberflächen mit Schweizer Präzision.</p>
+          {productionFlags.usingPlaceholderImages || productionFlags.usingPlaceholderTestimonials ? (
+            <p class="footer-note">Hinweis: Referenzen und einzelne Inhalte werden vor dem Livegang noch finalisiert.</p>
+          ) : null}
         </div>
         <div class="site-nav" aria-label="Footer Navigation">
-          <a href="mailto:info@malerei-blaser.ch">E-Mail</a>
-          <a href="tel:+41336541234">Telefon</a>
-          <a href="https://wa.me/41790000000">WhatsApp</a>
+          <a href={`mailto:${siteConfig.email}`}>E-Mail</a>
+          <a href={siteConfig.phoneHref}>Telefon</a>
+          {productionFlags.whatsappEnabled ? <a href={siteConfig.whatsappHref}>WhatsApp</a> : null}
         </div>
       </div>
     </footer>

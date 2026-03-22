@@ -1,30 +1,50 @@
+---
+import { productionFlags, siteConfig } from '../config/site';
+---
 <section id="kontakt" class="section">
   <div class="container contact-grid">
     <div>
       <div class="section__header">
         <span class="section__eyebrow">Kontakt</span>
         <h2>Projekt besprechen und Offerte anfragen.</h2>
-        <p class="lead">Kontaktmodul mit klarer Conversion-Struktur: Formular, Telefon, E-Mail und WhatsApp in einem Blick.</p>
+        <p class="lead">
+          Kontaktmodul mit klarer Conversion-Struktur: Formular, Telefon und E-Mail in einem Blick.
+        </p>
       </div>
-      <form class="contact-form card contact-card" action="https://formspree.io/f/placeholder" method="POST">
-        <div class="field">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" autocomplete="name" required />
+
+      {productionFlags.formEnabled ? (
+        <form class="contact-form card contact-card" action={siteConfig.formAction} method="POST">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="email">E-Mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="phone">Telefon</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" />
+          </div>
+          <div class="field">
+            <label for="project">Projektbeschreibung</label>
+            <textarea id="project" name="project" placeholder="Kurz beschreiben: Objekt, Umfang, gewünschter Termin …"></textarea>
+          </div>
+          <button class="button button--accent" type="submit">Offerte anfragen</button>
+        </form>
+      ) : (
+        <div class="card contact-card contact-card--notice">
+          <h3>Offerte anfragen</h3>
+          <p>
+            Das Online-Formular wird gerade für den Live-Betrieb vorbereitet. Bitte melden Sie sich bis dahin
+            direkt per Telefon oder E-Mail.
+          </p>
+          <div class="hero__actions">
+            <a class="button button--primary" href={siteConfig.phoneHref}>Anrufen</a>
+            <a class="button button--accent" href={`mailto:${siteConfig.email}`}>E-Mail schreiben</a>
+          </div>
         </div>
-        <div class="field">
-          <label for="email">E-Mail</label>
-          <input id="email" name="email" type="email" autocomplete="email" required />
-        </div>
-        <div class="field">
-          <label for="phone">Telefon</label>
-          <input id="phone" name="phone" type="tel" autocomplete="tel" />
-        </div>
-        <div class="field">
-          <label for="project">Projektbeschreibung</label>
-          <textarea id="project" name="project" placeholder="Kurz beschreiben: Objekt, Umfang, gewünschter Termin …"></textarea>
-        </div>
-        <button class="button button--accent" type="submit">Offerte anfragen</button>
-      </form>
+      )}
     </div>
 
     <aside class="contact-card card">
@@ -32,23 +52,25 @@
       <div class="meta-list">
         <div>
           <strong>Telefon</strong>
-          <a href="tel:+41336541234">+41 33 654 12 34</a>
+          <a href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a>
         </div>
         <div>
           <strong>E-Mail</strong>
-          <a href="mailto:info@malerei-blaser.ch">info@malerei-blaser.ch</a>
+          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
         </div>
-        <div>
-          <strong>WhatsApp</strong>
-          <a href="https://wa.me/41790000000">+41 79 000 00 00</a>
-        </div>
+        {productionFlags.whatsappEnabled ? (
+          <div>
+            <strong>WhatsApp</strong>
+            <a href={siteConfig.whatsappHref}>{siteConfig.whatsappDisplay}</a>
+          </div>
+        ) : null}
         <div>
           <strong>Standort</strong>
-          Spiez, Berner Oberland
+          {siteConfig.location}, {siteConfig.region}
         </div>
         <div>
           <strong>Antwortzeit</strong>
-          In der Regel innerhalb von 24 Stunden
+          {siteConfig.responseTime}
         </div>
       </div>
     </aside>

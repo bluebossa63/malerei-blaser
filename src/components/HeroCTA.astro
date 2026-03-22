@@ -1,16 +1,23 @@
+---
+import { productionFlags, siteConfig } from '../config/site';
+---
 <section class="hero">
   <div class="container hero__wrap">
     <div class="hero__copy">
       <span class="section__eyebrow">Malerei · Fassaden · Innenräume</span>
       <h1>Saubere Linien. Starke Farben. Solide Handwerksarbeit.</h1>
       <p>
-        Malerei Blaser realisiert Fassaden, Wohnräume und Spezialoberflächen mit klarer Beratung,
+        {siteConfig.brandShort} realisiert Fassaden, Wohnräume und Spezialoberflächen mit klarer Beratung,
         verlässlicher Ausführung und sichtbarer Liebe zum Detail — vom Einfamilienhaus bis zur Gewerbefläche.
       </p>
       <div class="hero__actions">
-        <a class="button button--primary" href="tel:+41336541234">Jetzt anrufen</a>
+        <a class="button button--primary" href={siteConfig.phoneHref}>Jetzt anrufen</a>
         <a class="button button--accent" href="#kontakt">Offerte anfragen</a>
-        <a class="button button--secondary" href="https://wa.me/41790000000">WhatsApp</a>
+        {productionFlags.whatsappEnabled ? (
+          <a class="button button--secondary" href={siteConfig.whatsappHref}>WhatsApp</a>
+        ) : (
+          <span class="button button--secondary button--disabled" aria-disabled="true">WhatsApp bald verfügbar</span>
+        )}
       </div>
       <div class="hero__stats">
         <div class="hero__stat">
@@ -23,7 +30,7 @@
         </div>
         <div class="hero__stat">
           <strong>CH</strong>
-          lokal in Spiez und im Berner Oberland
+          lokal in {siteConfig.location} und im {siteConfig.region}
         </div>
       </div>
     </div>

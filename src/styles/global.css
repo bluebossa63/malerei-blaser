@@ -99,6 +99,11 @@ button, input, textarea { font: inherit; }
   background: linear-gradient(135deg, var(--color-accent), #ea580c);
   box-shadow: 0 16px 30px rgba(249,115,22,.22);
 }
+.button--disabled {
+  opacity: .6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
 
 .site-header {
   position: sticky;
