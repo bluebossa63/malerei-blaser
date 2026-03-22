@@ -1,0 +1,50 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Malerei Blaser — Präzision für Fassaden, Innenräume & Spezialtechniken',
+  description = 'Moderne Malerarbeiten in Spiez: Fassaden, Innenräume, Spezialtechniken und persönliche Beratung mit klarer Offerte.'
+} = Astro.props;
+---
+<!doctype html>
+<html lang="de-CH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a href="#top" class="brand">Malerei Blaser <small>Spiez</small></a>
+        <nav class="site-nav" aria-label="Hauptnavigation">
+          <a href="#leistungen">Leistungen</a>
+          <a href="#galerie">Galerie</a>
+          <a href="#prozess">Prozess</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
+      </div>
+    </header>
+    <main id="top">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container site-footer__inner footer-grid">
+        <div>
+          <p><strong>Atelier Martin Blaser</strong><br />Malerei & Oberflächen mit Schweizer Präzision.</p>
+        </div>
+        <div class="site-nav" aria-label="Footer Navigation">
+          <a href="mailto:info@malerei-blaser.ch">E-Mail</a>
+          <a href="tel:+41336541234">Telefon</a>
+          <a href="https://wa.me/41790000000">WhatsApp</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

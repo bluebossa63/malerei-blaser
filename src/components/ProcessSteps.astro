@@ -1,0 +1,34 @@
+---
+const steps = [
+  {
+    title: 'Beratung',
+    body: 'Kurzes Gespräch, Objektaufnahme und ehrliche Empfehlung zur besten Lösung.'
+  },
+  {
+    title: 'Ausführung',
+    body: 'Saubere Vorbereitung, präzise Umsetzung und transparente Kommunikation während des Auftrags.'
+  },
+  {
+    title: 'Abschluss',
+    body: 'Gemeinsame Abnahme, Feinschliff und ein Ergebnis, das langfristig überzeugt.'
+  }
+];
+---
+<section id="prozess" class="section">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">Ablauf</span>
+      <h2>Von der ersten Besichtigung bis zur sauberen Übergabe.</h2>
+      <p class="lead">Ein klarer Dreischritt reduziert Rückfragen und stärkt Vertrauen früh im Lead-Funnel.</p>
+    </div>
+    <div class="process-grid">
+      {steps.map((step, index) => (
+        <article class="process-card card">
+          <div class="process-index">{index + 1}</div>
+          <h3>{step.title}</h3>
+          <p>{step.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,53 @@
+---
+const projects = [
+  {
+    title: 'Wohnhaus mit warmer Fassadensanierung',
+    tag: 'Fassade',
+    copy: 'Neu aufgefrischte Aussenhülle mit langlebigem Schutz und ruhiger Farbwirkung.',
+    image: 'https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=80',
+    size: 'wide'
+  },
+  {
+    title: 'Treppenhaus mit klarer Linienführung',
+    tag: 'Innenraum',
+    copy: 'Helle Oberflächen, robuste Beschichtung und saubere Kanten für stark frequentierte Bereiche.',
+    image: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80',
+    size: 'tall'
+  },
+  {
+    title: 'Boutique mit dekorativer Akzentwand',
+    tag: 'Spezialtechnik',
+    copy: 'Struktur und Tiefe für ein hochwertiges Kundenerlebnis im Verkaufsraum.',
+    image: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80',
+    size: 'medium'
+  },
+  {
+    title: 'Ferienwohnung mit frischem Farbkonzept',
+    tag: 'Renovation',
+    copy: 'Schnelle Ausführung zwischen Belegungen mit harmonischem, hellem Gesamteindruck.',
+    image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
+    size: 'medium'
+  }
+];
+---
+<section id="galerie" class="section">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">Galerie & Referenzen</span>
+      <h2>Projektbilder, die Qualität sofort sichtbar machen.</h2>
+      <p class="lead">Responsive Grid-Komponente für Referenzen, später leicht durch echte Projekte ersetzbar.</p>
+    </div>
+    <div class="gallery-grid">
+      {projects.map((project) => (
+        <article class={`gallery-card gallery-card--${project.size} card`}>
+          <img src={project.image} alt={project.title} loading="lazy" />
+          <div class="gallery-card__content">
+            <span class="gallery-card__tag">{project.tag}</span>
+            <h3>{project.title}</h3>
+            <p>{project.copy}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

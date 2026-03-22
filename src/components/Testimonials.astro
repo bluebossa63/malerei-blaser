@@ -1,0 +1,34 @@
+---
+const items = [
+  {
+    quote: 'Die Arbeiten wurden pünktlich, sauber und mit viel Sorgfalt ausgeführt. Genau so wünscht man sich einen Handwerksbetrieb.',
+    author: 'Privatkunde aus Spiez'
+  },
+  {
+    quote: 'Sehr angenehme Zusammenarbeit, klare Offerte und hochwertige Ausführung auch unter engem Terminplan.',
+    author: 'Architektin, Berner Oberland'
+  },
+  {
+    quote: 'Von der Beratung bis zum Finish zuverlässig. Unsere Gästezimmer wirken jetzt deutlich hochwertiger.',
+    author: 'Hotelbetrieb Region Thun'
+  }
+];
+---
+<section class="section">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">Vertrauen</span>
+      <h2>Kurze Signale für Qualität, Zuverlässigkeit und saubere Übergabe.</h2>
+      <p class="lead">Platzhalter-Zitate, bis echte Referenzen vorliegen.</p>
+    </div>
+    <div class="testimonial-grid">
+      {items.map((item) => (
+        <article class="testimonial-card card">
+          <h3>“</h3>
+          <p>{item.quote}</p>
+          <strong>{item.author}</strong>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

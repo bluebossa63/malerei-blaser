@@ -1,0 +1,38 @@
+---
+const services = [
+  {
+    title: 'Fassaden',
+    body: 'Witterungsbeständige Fassadenanstriche mit sauberer Vorbereitung und langlebigem Finish.'
+  },
+  {
+    title: 'Innenräume',
+    body: 'Wohn- und Arbeitsräume mit harmonischen Farbsystemen, präziser Abdeckung und sauberer Übergabe.'
+  },
+  {
+    title: 'Spezialtechniken',
+    body: 'Lasuren, Strukturputze und dekorative Oberflächen für markante Räume mit Charakter.'
+  },
+  {
+    title: 'Reparaturen',
+    body: 'Schnelle Ausbesserungen, Unterhaltsarbeiten und Auffrischungen bei kleinen und grossen Flächen.'
+  }
+];
+---
+<section id="leistungen" class="section">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__eyebrow">Leistungen</span>
+      <h2>Saubere Ausführung für innen, aussen und dazwischen.</h2>
+      <p class="lead">Vier Kernbereiche, klar kommuniziert und für mobile Nutzer sofort erfassbar.</p>
+    </div>
+    <div class="service-grid">
+      {services.map((service, index) => (
+        <article class="service-card card">
+          <div class="service-icon">0{index + 1}</div>
+          <h3>{service.title}</h3>
+          <p>{service.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
